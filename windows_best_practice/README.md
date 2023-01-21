@@ -25,6 +25,46 @@ In the <strong>Task Scheduler</strong> under <strong>Task Scheduler Library</str
 
 - <strong>NOTE: do not Delete but Disable the tasks. If we Delete the tasks we risk that when a program using the tasks is run, the tasks will be recreated and be Run.</strong>
 
+### Disable/Uninstall Edge:
+
+<ins>Disable Edge</ins>
+
+Input regedit in the search box and click the result to open Registry Editor.
+
+Computer\HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager
+
+Set SilentInstalledAppsEnabled DWORD from 1 (enable) to 0 (disable).
+
+<ins>Uninstall Edge</ins>
+
+Your Command Prompt will now change to show that you’re in the folder you navigated to using the following command.
+
+```cmd
+cd %PROGRAMFILES(X86)%\Microsoft\Edge\Application\xx\Installer
+```
+
+When entering it, substitute ‘xx’ for the current version number of Microsoft Edge installed on your PC. You can find that information in the ‘About’ section of Edge’s settings. Now, enter the following command:
+
+```cmd
+setup --uninstall --force-uninstall --system-level
+```
+
+There’s no restart involved, Microsoft Edge will now be removed from your system.
+
+### Disable Bing Search:
+
+Input regedit in the search box and click the result to open Registry Editor.
+
+Go to the path:
+
+```cmd
+HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Search.
+```
+
+Right-click on the Search option, click New and DWORD (32-bit) Value, name the value to BingSearchEnabled.
+
+Double-click the value and ensure its value data is set to 0. Double-click CortanaConsent and set its value data to 0, too.
+
 ### Cleanup of actual machine:
 
 In the <strong>Run</strong> menu search <em>appwiz.cpl</em> which opens the old version of the uninstall menu (the newer ones can also be used). Uninstall unnecessary or unused programs.
